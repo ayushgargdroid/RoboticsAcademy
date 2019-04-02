@@ -10,7 +10,6 @@ from gui.form import Ui_MainWindow
 from gui.widgets.cameraWidget import CameraWidget
 from gui.widgets.logoWidget import LogoWidget
 from gui.widgets.mapWidget import MapWidget
-from gui.widgets.chronoWidget import ChronoWidget
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -33,8 +32,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.camera1=CameraWidget(self)
         self.mapW = MapWidget(self)
         self.verticalLayoutMap.addWidget(self.mapW)
-        self.chronoW = ChronoWidget(self)
-        self.verticalLayoutChrono.addWidget(self.chronoW)
         print(self.mapW.width(), self.mapW.height())
 
         self.stopButton.clicked.connect(self.stopClicked)
@@ -48,7 +45,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.mapW.setPhantomPos(phx, phy)
         duration = self.algorithm.get_duration()
         initime = self.algorithm.get_initime()
-        self.chronoW.setTime(initime, duration)
         self.camera1.updateImage()
 
     def getCamera(self):
